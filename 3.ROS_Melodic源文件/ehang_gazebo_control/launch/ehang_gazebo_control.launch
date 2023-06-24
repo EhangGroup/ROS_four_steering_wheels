@@ -1,0 +1,59 @@
+<launch>
+  <!--选择车型-->
+  <arg name="car_mode" default="steering_wheel" doc="opt: mini_akm,mini_mec,mini_4wd,mini_mec_control,steering_wheel" />
+  <!--是否开启导航功能，在导航相关文件中开启，此处默认不开启-->
+  <arg name="gazebo_navigation" default="false" />
+  <!--是否为谷歌建图，在建图相关文件中开启，此处默认不开启-->
+  <arg name="is_cartographer" default="false" />
+
+
+  <!-- load the controllers -->
+  <!--判断车型是否为mini_akm-->
+  <node if="$(eval car_mode == 'mini_akm')" name="controller_manager" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="wheeltec" args="$(arg car_mode)_left_wheel_velocity_controller  $(arg car_mode)_right_wheel_velocity_controller  $(arg car_mode)_left_steering_hinge_position_controller  $(arg car_mode)_right_steering_hinge_position_controller  $(arg car_mode)_joint_state_controller" />
+
+  <!--判断车型是否为steering_wheel和mini_4wd-->
+  <node if="$(eval car_mode == 'steering_wheel' or car_mode == 'mini_4wd')" name="controller_manager" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="ehang" args="steering_wheel_left_front_1_wheel_velocity_controller  steering_wheel_left_front_2_wheel_velocity_controller  
+                                         steering_wheel_left_rear_1_wheel_velocity_controller steering_wheel_left_rear_2_wheel_velocity_controller 
+                                         steering_wheel_right_front_1_wheel_velocity_controller steering_wheel_right_front_2_wheel_velocity_controller
+                                         steering_wheel_right_rear_1_wheel_velocity_controller steering_wheel_right_rear_2_wheel_velocity_controller
+                                         steering_wheel_joint_state_controller" />
+                                         <!-- turntable_lf_steering_hinge_position_controller turntable_lb_steering_hinge_position_controller 
+                                         turntable_rf_steering_hinge_position_controller turntable_rb_steering_hinge_position_controller 
+                                         steering_wheel_left_front_wheel_velocity_controller  steering_wheel_left_rear_wheel_velocity_controller
+                                         steering_wheel_right_front_wheel_velocity_controller steering_wheel_right_rear_wheel_velocity_controller  -->
+
+  <!--判断车型是否为mini_mec_control和steering_wheel-->
+  <!-- 运行joint_state_publisher节点，发布机器人的关节状态 设置GUI参数，显示关节控制插件 -->
+  <param name="use_gui" value="true" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <remap from="/joint_states" to="/ehang/joint_states" />
+  </node>
+
+  <!-- 开启teb_local_planner导航算法-默认使用teb算法-->
+  <!-- <include file="$(find ehang_gazebo_function)/launch/include/teb_local_planner.launch" if="$(arg gazebo_navigation)"> -->
+  <!-- 开启dwa_local_planner导航算法,与teb二者选其一，非全向移动如akm不可使用dwa算法-->
+  <!-- <include file="$(find ehang_gazebo_function)/launch/include/dwa_local_planner.launch" if="$(arg gazebo_navigation)">  -->
+  <!-- <arg name="car_mode" value="$(arg car_mode)" /> -->
+  <!-- </include> -->
+
+  <!--判断车型是否为mini_akm,steering_wheel和mini_4wd-->
+  <group if="$(eval car_mode == 'mini_akm' or car_mode == 'steering_wheel' or car_mode == 'mini_4wd')">
+    <!--cmd_vel速度计算并赋值controller command-->
+    <node pkg="ehang_gazebo_function" type="Sub_cmd_vel_$(arg car_mode).py" name="sub_$(arg car_mode)_cmd" output="screen" />
+    <!--订阅话题推出机器人运动状态-->
+    <!-- <node pkg="ehang_gazebo_function" type="real_cmd_vel_$(arg car_mode).py" name="pub_$(arg car_mode)_cmd" output="screen" /> -->
+    <!--load controller yaml-->
+    <rosparam file="$(find ehang_gazebo_control)/config/ehang_control_$(arg car_mode).yaml" command="load" />
+    <!--发布odom话题和tf-->
+    <!-- <node unless="$(arg is_cartographer)" pkg="ehang_gazebo_function" name="gazebo_odometry_node" type="gazebo_odometry.py" output="screen" /> -->
+  </group>
+
+  <!--开启小车仿真节点-->
+  <include file="$(find ehang_description)/launch/ehang_robot_gazebo.launch">
+    <arg name="car_mode" value="$(arg car_mode)" />
+  </include>
+
+  <!--打开rviz-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ehang_gazebo_function)/rviz_config/$(arg car_mode).rviz" />
+
+</launch>

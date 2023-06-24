@@ -1,0 +1,123 @@
+ehang :
+  #上面的ehang是运行动命名空间
+  steering_wheel_joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Velocity Controllers ----速度控制器---------------------
+  steering_wheel_left_front_1_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: lf_1_Joint
+    pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+  steering_wheel_left_front_2_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: lf_2_Joint
+    pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+  steering_wheel_left_rear_1_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: lb_1_Joint
+    pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+  steering_wheel_left_rear_2_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: lb_2_Joint
+    pid: {  p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+
+
+  steering_wheel_right_front_1_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: rf_1_Joint
+    pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+  steering_wheel_right_front_2_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: rf_2_Joint
+    pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+  steering_wheel_right_rear_1_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: rb_1_Joint
+    pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+  steering_wheel_right_rear_2_wheel_velocity_controller:
+    type:  velocity_controllers/JointVelocityController
+    joint:  rb_2_Joint
+    pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+
+  # steering_wheel_left_front_wheel_velocity_controller:
+  #   type: velocity_controllers/JointVelocityController
+  #   joint: turntable_lf_Joint
+  #   pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+  # steering_wheel_left_rear_wheel_velocity_controller:
+  #   type: velocity_controllers/JointVelocityController
+  #   joint: turntable_lb_Joint
+  #   pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+  # steering_wheel_right_front_wheel_velocity_controller:
+  #   type: velocity_controllers/JointVelocityController
+  #   joint: turntable_rf_Joint
+  #   pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+  # steering_wheel_right_rear_wheel_velocity_controller:
+  #   type:  velocity_controllers/JointVelocityController
+  #   joint:  turntable_rb_Joint
+  #   pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp: 0.0}
+
+    
+  /gazebo_ros_control:
+    pid_gains:
+      lf_1_Joint:
+        p: 1.0
+        i: 0.0
+        d: 0.0
+      lf_2_Joint:
+        p: 1.0
+        i: 0.0
+        d: 0.0
+      lb_1_Joint:
+        p: 1.0
+        i: 0.0
+        d: 0.0
+      lb_2_Joint:
+        p: 1.0
+        i: 0.0
+        d: 0.0
+      rf_1_Joint:
+        p: 1.0
+        i: 0.0
+        d: 0.0
+      rf_2_Joint:
+        p: 1.0
+        i: 0.0
+        d: 0.0
+      rb_1_Joint:
+        p: 1.0
+        i: 0.0
+        d: 0.0
+      rb_2_Joint:
+        p: 1.0
+        i: 0.0
+        d: 0.0
+
+  # turntable_lf_steering_hinge_position_controller:
+  #   joint:  turntable_lf_Joint
+  #   type:  position_controllers/JointPositionController
+
+  # turntable_lb_steering_hinge_position_controller:
+  #   joint: turntable_lb_Joint
+  #   type: position_controllers/JointPositionController
+
+  # turntable_rf_steering_hinge_position_controller:
+  #   joint:  turntable_rf_Joint
+  #   type:  position_controllers/JointPositionController
+
+  # turntable_rb_steering_hinge_position_controller:
+  #   joint: turntable_rb_Joint
+  #   type: position_controllers/JointPositionController
+
+

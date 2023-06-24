@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="map_server" type="map_saver" name="map_saver1" args="-f /home/robot/catkin_ws/src/ehang_gazebo_function/map/EHANG" output="screen">	
+	</node>
+</launch>
+

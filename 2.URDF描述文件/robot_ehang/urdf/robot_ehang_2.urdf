@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="robot_ehang_2">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.000740931861202631 -4.48305072513504E-18 -0.0150251748350002"
+        rpy="0 0 0" />
+      <mass
+        value="5.7905552345472" />
+      <inertia
+        ixx="0.115480968122851"
+        ixy="-2.87284031780095E-17"
+        ixz="2.13440240516794E-05"
+        iyy="0.115166752909652"
+        iyz="1.01618034046436E-19"
+        izz="0.229780116928925" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="turntable_lf_Link">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 2.77555756156289E-17 -0.0254858770205358"
+        rpy="0 0 0" />
+      <mass
+        value="0.444639349653019" />
+      <inertia
+        ixx="0.00073928927023106"
+        ixy="7.61006163548786E-20"
+        ixz="1.44058079470147E-19"
+        iyy="0.000612309735948238"
+        iyz="4.61906307609281E-20"
+        izz="0.000935490336925797" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/turntable_lf_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/turntable_lf_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="turntable_lf_Joint"
+    type="continuous">
+    <origin
+      xyz="0.151108606892245 0.15 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="turntable_lf_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="lf_1_Link">
+    <inertial>
+      <origin
+        xyz="0 -0.00151578947368425 -1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.093266031903447" />
+      <inertia
+        ixx="5.47649111994664E-05"
+        ixy="-2.89664055852232E-22"
+        ixz="-4.81832706812139E-20"
+        iyy="9.87141180697017E-05"
+        iyz="2.72102368573993E-21"
+        izz="5.47649111994664E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/lf_1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/lf_1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lf_1_Joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0625 -0.08"
+      rpy="0 0 0" />
+    <parent
+      link="turntable_lf_Link" />
+    <child
+      link="lf_1_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="lf_2_Link">
+    <inertial>
+      <origin
+        xyz="0 0.00130346232179225 -2.08166817117217E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0964076245570366" />
+      <inertia
+        ixx="5.49986625531219E-05"
+        ixy="-1.75439841024276E-21"
+        ixz="4.75400126623466E-20"
+        iyy="9.8871197702381E-05"
+        iyz="-2.5278461227548E-21"
+        izz="5.49986625531219E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/lf_2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/lf_2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lf_2_Joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0624999999999999 -0.08"
+      rpy="0 0 0" />
+    <parent
+      link="turntable_lf_Link" />
+    <child
+      link="lf_2_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="turntable_lb_Link">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 2.77555756156289E-17 -0.0254858770205358"
+        rpy="0 0 0" />
+      <mass
+        value="0.44463934965302" />
+      <inertia
+        ixx="0.00073928927023106"
+        ixy="1.09996246982865E-19"
+        ixz="1.32202795781894E-19"
+        iyy="0.000612309735948238"
+        iyz="4.60388236780283E-20"
+        izz="0.000935490336925797" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/turntable_lb_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/turntable_lb_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="turntable_lb_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.148891393107755 0.15 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="turntable_lb_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="lb_1_Link">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 -0.00151578947368425 -1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.093266031903447" />
+      <inertia
+        ixx="5.47649111994664E-05"
+        ixy="1.96029342537779E-21"
+        ixz="-4.94471134658042E-20"
+        iyy="9.87141180697016E-05"
+        iyz="1.29181137444782E-21"
+        izz="5.47649111994664E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/lb_1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/lb_1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lb_1_Joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0625 -0.08"
+      rpy="0 0 0" />
+    <parent
+      link="turntable_lb_Link" />
+    <child
+      link="lb_1_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="lb_2_Link">
+    <inertial>
+      <origin
+        xyz="0 0.00130346232179225 -1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0964076245570366" />
+      <inertia
+        ixx="5.49986625531219E-05"
+        ixy="5.30686683275713E-22"
+        ixz="5.15076747464944E-20"
+        iyy="9.8871197702381E-05"
+        iyz="4.17065314415243E-22"
+        izz="5.4998662553122E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/lb_2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/lb_2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lb_2_Joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0625 -0.08"
+      rpy="0 0 0" />
+    <parent
+      link="turntable_lb_Link" />
+    <child
+      link="lb_2_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="turntable_rf_Link">
+    <inertial>
+      <origin
+        xyz="0 2.77555756156289E-17 -0.0254858770205358"
+        rpy="0 0 0" />
+      <mass
+        value="0.44463934965302" />
+      <inertia
+        ixx="0.00073928927023106"
+        ixy="1.11735717249125E-19"
+        ixz="1.34473512808538E-19"
+        iyy="0.000612309735948238"
+        iyz="1.88296083514115E-19"
+        izz="0.000935490336925797" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/turntable_rf_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/turntable_rf_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="turntable_rf_Joint"
+    type="continuous">
+    <origin
+      xyz="0.151108606892245 -0.15 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="turntable_rf_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="rf_1_Link">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 -0.00151578947368421 -1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0932660319034468" />
+      <inertia
+        ixx="5.47649111994663E-05"
+        ixy="-1.10467205265451E-21"
+        ixz="-4.88036561406287E-20"
+        iyy="9.87141180697015E-05"
+        iyz="1.79605291045443E-21"
+        izz="5.47649111994663E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/rf_1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/rf_1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rf_1_Joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0625 -0.08"
+      rpy="0 0 0" />
+    <parent
+      link="turntable_rf_Link" />
+    <child
+      link="rf_1_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="rf_2_Link">
+    <inertial>
+      <origin
+        xyz="0 0.00130346232179226 -1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0964076245570367" />
+      <inertia
+        ixx="5.4998662553122E-05"
+        ixy="-3.23771328108907E-21"
+        ixz="4.63221143029695E-20"
+        iyy="9.88711977023811E-05"
+        iyz="-2.15830121824928E-21"
+        izz="5.4998662553122E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/rf_2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/rf_2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rf_2_Joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0624999999999999 -0.08"
+      rpy="0 0 0" />
+    <parent
+      link="turntable_rf_Link" />
+    <child
+      link="rf_2_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="turntable_rb_Link">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 5.55111512312578E-17 -0.0254858770205358"
+        rpy="0 0 0" />
+      <mass
+        value="0.444639349653019" />
+      <inertia
+        ixx="0.00073928927023106"
+        ixy="6.07270354641631E-20"
+        ixz="1.63533282456069E-19"
+        iyy="0.000612309735948238"
+        iyz="2.11314562707794E-19"
+        izz="0.000935490336925797" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/turntable_rb_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/turntable_rb_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="turntable_rb_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.148891393107755 -0.15 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="turntable_rb_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="rb_1_Link">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 -0.00151578947368422 -1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0932660319034468" />
+      <inertia
+        ixx="5.47649111994663E-05"
+        ixy="1.78443581234318E-21"
+        ixz="-4.96308367531817E-20"
+        iyy="9.87141180697015E-05"
+        iyz="7.03129642163336E-22"
+        izz="5.47649111994663E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/rb_1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/rb_1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rb_1_Joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0625 -0.08"
+      rpy="0 0 0" />
+    <parent
+      link="turntable_rb_Link" />
+    <child
+      link="rb_1_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="rb_2_Link">
+    <inertial>
+      <origin
+        xyz="-2.77555756156289E-17 0.00130346232179226 -2.08166817117217E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0964076245570368" />
+      <inertia
+        ixx="5.4998662553122E-05"
+        ixy="3.15175946727271E-22"
+        ixz="5.13239720695012E-20"
+        iyy="9.88711977023811E-05"
+        iyz="5.98137080660663E-23"
+        izz="5.4998662553122E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/rb_2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/rb_2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rb_2_Joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0625 -0.08"
+      rpy="0 0 0" />
+    <parent
+      link="turntable_rb_Link" />
+    <child
+      link="rb_2_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="body_Link">
+    <inertial>
+      <origin
+        xyz="-1.93246810444315E-34 -1.63232502450634E-18 -0.025"
+        rpy="0 0 0" />
+      <mass
+        value="0.0628318530717959" />
+      <inertia
+        ixx="1.93731546971371E-05"
+        ixy="0"
+        ixz="-6.0710276002152E-38"
+        iyy="1.93731546971371E-05"
+        iyz="-3.91726475263398E-38"
+        izz="1.25663706143592E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/body_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_ehang_2/meshes/body_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="body_Joint"
+    type="fixed">
+    <origin
+      xyz="0.00110860689224476 0 0.02"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="body_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name="dummy">
+  </link>
+  <joint name="dummy_joint" type="fixed">
+    <parent link="dummy"/>
+    <child link="base_link"/>
+  </joint>
+
+</robot>

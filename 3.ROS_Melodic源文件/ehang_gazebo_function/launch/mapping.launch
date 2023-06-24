@@ -1,0 +1,40 @@
+<launch>
+    <!--选择建图算法-->
+    <arg name="mapping_mode"  default="gmapping" doc="opt: gmapping,hector,cartographer,karto"/>
+    <!-- 开启gmapping建图算法  -->
+    <group if="$(eval mapping_mode == 'gmapping')">
+      <include file="$(find ehang_gazebo_function)/launch/include/algorithm_gmapping.launch" />
+      <!-- 开启仿真节点-->
+      <include file="$(find ehang_gazebo_control)/launch/ehang_gazebo_control.launch" >
+        <arg name="is_cartographer" value="false"/>
+      </include>
+    </group>
+    <!-- 开启hector建图算法  -->
+    <group if="$(eval mapping_mode == 'hector')">
+      <include file="$(find ehang_gazebo_function)/launch/include/algorithm_hector.launch" />
+      <!-- 开启仿真节点-->
+      <include file="$(find ehang_gazebo_control)/launch/ehang_gazebo_control.launch" >
+        <arg name="is_cartographer" value="false"/>
+      </include>
+    </group>  
+    <!-- 开启karto建图算法  -->
+    <group if="$(eval mapping_mode == 'karto')">
+      <include file="$(find ehang_gazebo_function)/launch/include/algorithm_karto.launch" />
+      <!-- 开启仿真节点-->
+      <include file="$(find ehang_gazebo_control)/launch/ehang_gazebo_control.launch" >
+        <arg name="is_cartographer" value="false"/>
+      </include>
+    </group>  
+    <!-- 开启cartographer建图算法  -->
+    <group if="$(eval mapping_mode == 'cartographer')">
+      <!--这个功能包的路径是：/opt/ros/melodic/share/cartographer_ros,时间为由gazebo发出的仿真时间-->
+      <include file="$(find cartographer_ros)/launch/demo_revo_lds.launch">
+        <arg name="is_cartographer" value="true"/>        
+        <arg name="use_sim_time" value="true"/>
+      </include>
+      <!-- 开启仿真节点-->
+      <include file="$(find ehang_gazebo_control)/launch/ehang_gazebo_control.launch" >
+        <arg name="is_cartographer" value="true"/>
+      </include>
+    </group>    
+</launch>

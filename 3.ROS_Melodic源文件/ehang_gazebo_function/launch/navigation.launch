@@ -1,0 +1,20 @@
+
+<launch>
+ <!-- 开启仿真节点-->
+ <include file="$(find ehang_gazebo_control)/launch/ehang_gazebo_control.launch" >
+   <arg name="gazebo_navigation" default="true"/>
+ </include>
+ <!-- 设置需要用于导航的地图  -->
+ <arg name="map_file" default="$(find ehang_gazebo_function)/map/EHANG.yaml"/>
+ <node name="map_server_for_test" pkg="map_server" type="map_server" args="$(arg map_file)" output="screen" >
+ </node>
+ <!-- 开启用于导航的自适应蒙特卡洛定位amcl-->
+ <include file="$(find ehang_gazebo_function)/launch/include/amcl.launch" />
+ <!-- MarkerArray功能节点 -->
+ <node name='send_mark' pkg="ehang_gazebo_function" type="send_mark.py">
+ </node>
+</launch>
+
+
+
+

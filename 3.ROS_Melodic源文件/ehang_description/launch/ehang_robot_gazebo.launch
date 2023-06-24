@@ -1,0 +1,43 @@
+<launch>
+    <!--车型参数,由ehang_gazebo_control.launch定义导入-->
+    <arg name="car_mode"  default="steering_wheel" />
+
+    <!-- 设置launch文件的参数 -->
+    <arg name="world_name" value="$(find gazebo_ros)/launch/empty_world.launch"/><!--地图文件位置及命名-->
+    <arg name="paused" default="false"/> <!--以暂停状态打开Gazebo 默认为false-->
+    <arg name="use_sim_time" default="true"/> <!--节点启动模拟时间，启动主题topic /clock 默认为true-->
+    <arg name="gui" default="true"/> <!--启动Gazebo用户界面接口 默认为true-->
+    <arg name="headless" default="false"/><!--Gazebo已弃用，不起任何作用，定义仍保留以防止打破其他launch启动-->
+    <arg name="debug" default="false"/><!--用gdb模式启动gzserver（Gazebo 服务器） 默认为false-->
+
+    <!--机器人模型的起点放置位置xyz坐标-->
+    <arg name="x_pos" default="0.0"/>
+    <arg name="y_pos" default="0.0"/>
+    <arg name="z_pos" default="0.0"/>
+
+    <!-- 运行gazebo仿真环境 通过导入empty_world.launch并参数赋值 -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)" />
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+    </include>
+
+    <!-- 调用xacro文件解析器 将对应车型的xacro文件转为urdf文件 -->
+    <arg name="model" default="$(find xacro)/xacro --inorder '$(find ehang_description)/urdf/$(arg car_mode)/$(arg car_mode).xacro'"/>
+    <param name="robot_description" command="$(arg model)" />
+
+     <!-- 运行robot_state_publisher节点，发布tf  -->
+    <!-- <param name="use_gui" value="true"/> -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"  output="screen" >
+        <remap from="/joint_states" to="/ehang/joint_states"/> <!--重映射-->
+        <param name="publish_frequency" type="double" value="50.0" /> <!--发布频率-->
+    </node>
+
+    <!-- 在gazebo中加载机器人模型 向gazebo_ros发出服务请求 添加urdf到gazebo中-->
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" 
+          args="-urdf -model ehang -param robot_description -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)"/> 
+          
+</launch>

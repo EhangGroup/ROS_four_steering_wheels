@@ -1,0 +1,20 @@
+<launch>
+    <!--选择车型参数-->
+    <arg name="car_mode"  default="steering_wheel" 
+       doc="opt: mini_akm,mini_mec,mini_4wd,mini_mec_control,test,steering_wheel"/>
+
+    <!--开启小车仿真节点 并传入车型参数-->
+    <include file="$(find ehang_description)/launch/ehang_robot_gazebo.launch" >
+        <arg name="car_mode" value="$(arg car_mode)"/>
+    </include>
+
+    <!--运行rviz可视化界面-->
+    <node name="rviz" pkg="rviz" type="rviz"  args="-d $(find ehang_gazebo_function)/rviz_config/$(arg car_mode).rviz"/>
+
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态 设置GUI参数，显示关节控制插件 -->
+    <param name="use_gui" value="true"/>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+        <remap from="/joint_states" to="/ehang/joint_states"/>
+    </node> 
+    
+</launch>
